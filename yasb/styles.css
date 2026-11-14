@@ -1,0 +1,203 @@
+/* =====================================================================
+   Hasil render awal (palet biru hyprdots). Akan ditimpa matugen. Template: matugen/templates/yasb-styles.css, meniru waybar dari hyprdots.
+   JANGAN edit yasb/styles.css langsung: edit file ini lalu jalankan
+   apply-wallpaper.ps1 supaya ter-render ulang.
+   ===================================================================== */
+
+* {
+    font-family: "Adwaita Sans", "Segoe UI Variable Text", "Segoe UI";
+    font-size: 14px;
+    font-weight: 700;
+    color: #b4c5ff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Bar transparan; tiap widget jadi "pill" sendiri (seperti waybar) */
+.yasb-bar {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+.widget {
+    background-color: #1e1f25;
+    border-radius: 14px;
+    margin: 0 2px;
+    padding: 0 10px;
+}
+.widget:hover {
+    background-color: #292a2f;
+}
+.widget .label,
+.widget .icon {
+    background-color: rgba(0, 0, 0, 0);
+    color: #b4c5ff;
+}
+.widget .icon {
+    font-family: "JetBrainsMono NFP", "JetBrainsMono Nerd Font Propo";
+    font-size: 16px;
+}
+
+/* Workspace (hyprland/workspaces) */
+.komorebi-workspaces {
+    padding: 0 3px;
+}
+.komorebi-workspaces .offline-status {
+    color: #ffb4ab;
+}
+.komorebi-workspaces .ws-btn {
+    background-color: #1a1b21;
+    color: #b4c5ff;
+    border: none;
+    border-radius: 11px;
+    height: 22px;
+    min-width: 12px;
+    padding: 0 7px;
+    margin: 0 2px;
+}
+.komorebi-workspaces .ws-btn:hover {
+    background-color: #292a2f;
+}
+.komorebi-workspaces .ws-btn.populated {
+    color: #b4c5ff;
+}
+.komorebi-workspaces .ws-btn.active {
+    background-color: #b4c5ff;
+    color: #1e1f25;
+    padding: 0 12px;
+}
+
+/* Clock + kalender */
+.clock-widget .label {
+    color: #b4c5ff;
+}
+.calendar {
+    background-color: #1e1f25;
+}
+.calendar .calendar-table,
+.calendar .calendar-table::item {
+    background-color: rgba(0, 0, 0, 0);
+    color: #c5c6d0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+.calendar .calendar-table::item:selected {
+    color: #b4c5ff;
+}
+.calendar .day-label,
+.calendar .month-label,
+.calendar .date-label {
+    font-size: 16px;
+    color: #b4c5ff;
+    min-width: 180px;
+    max-width: 180px;
+}
+.calendar .day-label {
+    margin-top: 20px;
+}
+.calendar .month-label {
+    font-weight: normal;
+}
+.calendar .date-label {
+    font-size: 88px;
+    font-weight: 900;
+}
+
+/* Systray (hyprland: tray drawer) */
+.systray .button {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border-radius: 10px;
+    padding: 0 4px;
+}
+.systray .button:hover {
+    background-color: #292a2f;
+}
+.systray .unpinned-visibility-btn {
+    background-color: rgba(0, 0, 0, 0);
+    color: #b4c5ff;
+    border: none;
+    padding: 0 6px;
+}
+
+/* Language, media, volume */
+.language-widget .label {
+    color: #b4c5ff;
+}
+.media-widget .label {
+    color: #b4c5ff;
+}
+.media-widget .btn {
+    color: #b4c5ff;
+}
+.media-widget .icon {
+    padding: 0 6px 0 0;
+}
+.volume-widget .icon {
+    padding: 0 6px 0 0;
+}
+
+.audio-menu {
+    background-color: #1e1f25;
+}
+.audio-container .device {
+    background-color: rgba(0, 0, 0, 0);
+    color: #e3e2e9;
+    border: none;
+    padding: 6px 8px 6px 4px;
+    margin: 2px 0;
+    border-radius: 8px;
+}
+.audio-container .device.selected {
+    background-color: #292a2f;
+}
+.audio-container .device:hover {
+    background-color: #34343a;
+}
+
+/* Tombol power di bar */
+.power-menu-widget .label {
+    color: #b4c5ff;
+    font-size: 16px;
+}
+
+/* Popup power menu: 4 tombol bulat seperti rofi powermenu */
+.uptime {
+    color: #c5c6d0;
+}
+.power-menu-popup .button {
+    padding: 0;
+    width: 136px;
+    height: 136px;
+    border-radius: 68px;
+    background-color: #1a1b21;
+    border: 4px solid #1a1b21;
+}
+.power-menu-popup .button.hover {
+    background-color: #b4c5ff;
+    border: 4px solid #b4c5ff;
+}
+.power-menu-popup .button .label {
+    font-size: 0px;
+    margin: 0;
+    padding: 0;
+}
+.power-menu-popup .button .icon {
+    font-size: 48px;
+    padding: 0;
+    color: #c1c5dd;
+}
+.power-menu-popup .button.hover .icon {
+    color: #1b2d60;
+}
+
+/* Menu konteks & tooltip */
+.context-menu,
+.tooltip {
+    background-color: #1e1f25;
+    color: #e3e2e9;
+    border: 2px solid #b4c5ff;
+    border-radius: 12px;
+}

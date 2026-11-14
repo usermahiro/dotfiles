@@ -1,0 +1,134 @@
+# YASB: tiruan waybar dari hyprdots.
+# Kiri: workspace | Tengah: jam | Kanan: tray, keyboard, media, volume, power
+# Widget lain dari config lama (weather, cava, github, disk, dst.) sengaja dihapus
+# agar mirip aslinya; config lama kamu tetap ada di repo dotfiles.
+watch_stylesheet: true
+watch_config: true
+debug: false
+komorebi:
+  start_command: "komorebic start --whkd"
+  stop_command: "komorebic stop --whkd"
+  reload_command: "komorebic stop --whkd && komorebic start --whkd"
+bars:
+  primary-bar:
+    enabled: true
+    screens: ['*']
+    class_name: "yasb-bar"
+    alignment:
+      position: "top"
+      center: false
+    blur_effect:
+      enabled: false
+      acrylic: false
+      dark_mode: true
+      round_corners: false
+      border_color: None
+    window_flags:
+      always_on_top: true
+      windows_app_bar: true
+      hide_on_fullscreen: true
+    dimensions:
+      width: "100%"
+      height: 38
+    padding:
+      top: 4      # margin-top: 4 di waybar
+      left: 4
+      bottom: 0
+      right: 4
+    widgets:
+      left: ["komorebi_workspaces"]
+      center: ["clock"]
+      right: ["systray", "language", "media", "volume", "power_menu"]
+widgets:
+  komorebi_workspaces:
+    type: "komorebi.workspaces.WorkspaceWidget"
+    options:
+      label_offline: "⚡ Offline"
+      label_workspace_btn: "{index}"
+      label_workspace_active_btn: "{index}"
+      label_workspace_populated_btn: "{index}"
+      label_default_name: "{index}"
+      label_zero_index: false
+      hide_empty_workspaces: true   # hyprland hanya menampilkan workspace terisi + aktif
+      hide_if_offline: true
+      animation: true
+  clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "{%a %b %d %H:%M}"
+      label_alt: "{%A, %d %B %Y %H:%M}"
+      timezones: []
+      calendar:
+        alignment: "center"
+  systray:
+    type: "yasb.systray.SystrayWidget"
+    options:
+      class_name: "systray"
+      label_collapsed: ""
+      label_expanded: ""
+      label_position: "left"
+      icon_size: 18
+      show_unpinned: false          # mulai tertutup seperti drawer waybar
+      show_unpinned_button: true
+      show_battery: false
+      show_volume: false
+      show_network: false
+  language:
+    type: "yasb.language.LanguageWidget"
+    options:
+      label: "<span></span> {lang[country_code]}"
+      label_alt: "{lang[full_name]}"
+      update_interval: 5
+      callbacks:
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
+  media:
+    type: "yasb.media.MediaWidget"
+    options:
+      label: "{title}"
+      label_alt: "{artist}"
+      max_field_size:
+        label: 25
+        label_alt: 25
+      show_thumbnail: false
+      controls_only: false
+      controls_left: true
+      hide_empty: true
+      thumbnail_alpha: 250
+      thumbnail_padding: 8
+      thumbnail_corner_radius: 0
+      icons:
+        prev_track: ""
+        next_track: ""
+        play: "<span>󰎆</span>"
+        pause: "<span>󰎆</span>"
+  volume:
+    type: "yasb.volume.VolumeWidget"
+    options:
+      label: "<span>{icon}</span> {level}"
+      label_alt: "{volume}"
+      volume_icons:
+        - ""  # muted
+        - ""  # 0-10%
+        - ""  # 11-30%
+        - ""  # 31-60%
+        - ""  # 61-100%
+      callbacks:
+        on_left: "toggle_volume_menu"      # padanan klik -> pulsemixer
+        on_middle: "toggle_mute"
+        on_right: "exec cmd.exe /c start ms-settings:sound"
+  power_menu:
+    type: "yasb.power_menu.PowerMenuWidget"
+    options:
+      label: ""
+      uptime: false
+      blur: false
+      blur_background: true
+      animation_duration: 250
+      button_row: 4                        # 4 tombol sejajar seperti rofi powermenu
+      buttons:
+        shutdown: ["󰐥", "Shut Down"]
+        restart: ["󰑓", "Restart"]
+        sleep: ["", "Sleep"]
+        signout: ["", "Sign out"]

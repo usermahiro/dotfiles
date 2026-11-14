@@ -1,10 +1,10 @@
 {
- "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.33/schema.json",
+  "$schema": "https://komorebi.lgug2z.com/schema",
   "app_specific_configuration_path": "$Env:USERPROFILE/.config/komorebi/applications.json",
   "cross_monitor_move_behaviour": "Insert",
-  "window_hiding_behaviour":"Cloak",
+  "window_hiding_behaviour": "Cloak",
   "default_workspace_padding": 2,
-  "default_container_padding": 1,
+  "default_container_padding": 2,
   "floating_applications": [
     {
       "kind": "Title",
@@ -74,12 +74,12 @@
     {
       "kind": "Exe",
       "id": "fdm.exe",
-      "matching_strategy": "Equals"       
+      "matching_strategy": "Equals"
     },
     {
       "kind": "Class",
       "id": "RarReminder",
-      "matching_strategy": "Equals"       
+      "matching_strategy": "Equals"
     },
     {
       "kind": "Class",
@@ -95,8 +95,8 @@
     }
   ],
   "mouse_follows_focus": false,
-  "transparency": false,
-  "transparency_alpha": 240,
+  "transparency": true,
+  "transparency_alpha": 242,
   "transparency_ignore_rules": [
     {
       "kind": "Title",
@@ -115,7 +115,7 @@
     },
     {
       "kind": "Exe",
-      "id": "obs64.exe", 
+      "id": "obs64.exe",
       "matching_strategy": "Equals"
     },
     {
@@ -125,24 +125,25 @@
     }
   ],
   "animation": {
-    "enabled": false,
+    "enabled": true,
     "fps": 120,
-    "duration": 400,
-      "style": {
-        "movement":"EaseOutBack",
-        "transparency": "Linear"
-      }
+    "duration": 300,
+    "style": {
+      "movement": "EaseOutQuint",
+      "transparency": "Linear"
+    }
   },
   "border": true,
   "border_implementation": "Komorebi",
   "border_style": "System",
-  "border_width": 3,
+  "border_width": 2,
   "border_colours": {
-    "single": "#94e2d5",
-    "unfocused": "#45475a",
-    "floating": "#fab387",
-    "stack": "#cba6f7"
-  },  
+    "single": "#b4c5ff",
+    "stack": "#c1c5dd",
+    "monocle": "#e2bbdb",
+    "floating": "#e2bbdb",
+    "unfocused": "#1b2d60"
+  },
   "stackbar": {
     "height": 25,
     "mode": "Never",
@@ -159,30 +160,50 @@
     {
       "workspaces": [
         {
-          "name": "I",
+          "name": "1",
           "layout": "BSP",
           "workspace_rules": [
             {
               "kind": "Exe",
               "id": "zen.exe",
-              "matching_strategy": "Equals"       
+              "matching_strategy": "Equals"
             }
           ]
         },
         {
-          "name": "II",
+          "name": "2",
           "layout": "BSP"
         },
         {
-          "name": "III",
+          "name": "3",
           "layout": "BSP"
         },
         {
-          "name": "IV",
+          "name": "4",
           "layout": "BSP"
         },
         {
-          "name": "V",
+          "name": "5",
+          "layout": "BSP"
+        },
+        {
+          "name": "6",
+          "layout": "BSP"
+        },
+        {
+          "name": "7",
+          "layout": "BSP"
+        },
+        {
+          "name": "8",
+          "layout": "BSP"
+        },
+        {
+          "name": "9",
+          "layout": "BSP"
+        },
+        {
+          "name": "10",
           "layout": "BSP"
         }
       ]

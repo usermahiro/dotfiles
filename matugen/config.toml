@@ -1,0 +1,23 @@
+# Config matugen untuk Windows. Token @...@ diganti oleh install.ps1
+# dengan path absolut (matugen tidak mendokumentasikan ekspansi "~" di Windows).
+#
+# Dipanggil lewat:  matugen image <gambar> -c <file ini>
+# (lokasi default config matugen di Windows: %APPDATA%\InioX\matugen\config\config.toml,
+#  tapi script memakai -c supaya tidak bergantung pada itu)
+
+[config]
+
+# YASB: styles.css lengkap (bar ikut berubah warna otomatis, watch_stylesheet: true)
+[templates.yasb]
+input_path = '@WINDOTS@/templates/yasb-styles.css'
+output_path = '@YASB@/styles.css'
+
+# Warna border komorebi (ditempel ke komorebi.json oleh apply-wallpaper.ps1)
+[templates.komorebi_border]
+input_path = '@WINDOTS@/templates/komorebi-border.json'
+output_path = '@WINDOTS@/out/komorebi-border.json'
+
+# Color scheme "Matugen" untuk Windows Terminal (lewat folder Fragments)
+[templates.windows_terminal]
+input_path = '@WINDOTS@/templates/windows-terminal.json'
+output_path = '@WT_FRAGMENT@/matugen.json'

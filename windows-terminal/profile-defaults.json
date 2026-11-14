@@ -1,0 +1,15 @@
+{
+  "_petunjuk": "Gabungkan isi 'defaults' ini ke bagian profiles.defaults di settings.json Windows Terminal (Ctrl+, lalu 'Open JSON file'). Skema 'Matugen' dibuat otomatis oleh matugen lewat folder Fragments; tutup & buka lagi Windows Terminal setelah ganti wallpaper.",
+  "profiles": {
+    "defaults": {
+      "colorScheme": "Matugen",
+      "opacity": 95,
+      "padding": "10",
+      "font": {
+        "face": "JetBrainsMono Nerd Font",
+        "size": 12,
+        "weight": "bold"
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "single": "{{colors.primary.default.hex}}",
+  "stack": "{{colors.secondary.default.hex}}",
+  "monocle": "{{colors.tertiary.default.hex}}",
+  "floating": "{{colors.tertiary.default.hex}}",
+  "unfocused": "{{colors.on_primary.default.hex}}"
+}
