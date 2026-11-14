@@ -68,6 +68,8 @@ foreach ($cmd in 'komorebic', 'whkd', 'yasb', 'matugen') {
 
 # AutoHotkey: script elrond.ahk (Win+Enter -> Windows Terminal, Win+Alt+D -> sembunyikan ikon desktop)
 Install-File (Join-Path $src 'configs\ahk\elrond.ahk') (Join-Path $winDots 'elrond.ahk')
+# AutoHotkey: hilangkan taskbar bawaan Windows sepenuhnya (Win+Alt+T = toggle)
+Install-File (Join-Path $src 'configs\ahk\hide-taskbar.ahk') (Join-Path $winDots 'hide-taskbar.ahk')
 $ahk = Get-Command 'AutoHotkey64' -ErrorAction SilentlyContinue
 if (-not $ahk) {
     $ahkExe = Get-ChildItem "$env:ProgramFiles\AutoHotkey" -Filter 'AutoHotkey64.exe' -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
@@ -75,13 +77,17 @@ if (-not $ahk) {
 }
 if ($ahk) {
     $startup = [Environment]::GetFolderPath('Startup')
-    $lnk = Join-Path $startup 'elrond.lnk'
-    $ws = New-Object -ComObject WScript.Shell
-    $sc = $ws.CreateShortcut($lnk)
-    $sc.TargetPath = if ($ahk -is [string]) { $ahk } else { $ahk.Source }
-    $sc.Arguments  = '"' + (Join-Path $winDots 'elrond.ahk') + '"'
-    $sc.Save()
-    Write-Host "  -> $lnk"
+    foreach ($name in 'elrond', 'hide-taskbar') {
+        $ahkPath = Join-Path $winDots "$name.ahk"
+        if (-not (Test-Path -LiteralPath $ahkPath)) { continue }
+        $lnk = Join-Path $startup "$name.lnk"
+        $ws = New-Object -ComObject WScript.Shell
+        $sc = $ws.CreateShortcut($lnk)
+        $sc.TargetPath = if ($ahk -is [string]) { $ahk } else { $ahk.Source }
+        $sc.Arguments  = '"' + $ahkPath + '"'
+        $sc.Save()
+        Write-Host "  -> $lnk"
+    }
 } else {
     Write-Host '  KURANG  AutoHotkey64 (shortcut startup elrond.ahk tidak dibuat; lihat README.md)'
 }

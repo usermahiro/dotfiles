@@ -18,6 +18,7 @@ sama seperti di hyprdots.
 | pulsemixer | audio menu yasb | klik widget volume |
 | hyprlock | `Win+O` | kunci layar bawaan Windows |
 | keybind SUPER | whkd | workspace 1-10, fokus, pindah, resize, float, monocle |
+| (tanpa taskbar) | `hide-taskbar.ahk` | taskbar Windows disembunyikan total; `Win+Alt+T` menampilkannya sementara |
 
 Nilai yang diterjemahkan dari Hyprland: `gaps_out 4` = padding workspace 2 + container 2,
 `gaps_in 2` = container 2, `border_size 2`, `inactive_opacity 0.95` = alpha 242,
