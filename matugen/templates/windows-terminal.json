@@ -6,22 +6,22 @@
       "foreground": "{{colors.on_surface.default.hex}}",
       "cursorColor": "{{colors.on_surface.default.hex}}",
       "selectionBackground": "{{colors.secondary_fixed_dim.default.hex}}",
-      "black": "{{colors.surface_container_high.default.hex}}",
+      "black": "<* if {{ is_dark_mode }} *>{{colors.surface_container_high.default.hex}}<* else *>#ffffff<* endif *>",
       "red": "{{colors.error.default.hex}}",
       "green": "#9fd49b",
       "yellow": "#e8c87a",
       "blue": "{{colors.primary.default.hex}}",
       "purple": "{{colors.tertiary.default.hex}}",
       "cyan": "{{colors.secondary.default.hex}}",
-      "white": "{{colors.on_surface_variant.default.hex}}",
-      "brightBlack": "{{colors.outline.default.hex}}",
+      "white": "<* if {{ is_dark_mode }} *>{{colors.on_surface_variant.default.hex}}<* else *>#3a3a3a<* endif *>",
+      "brightBlack": "<* if {{ is_dark_mode }} *>{{colors.outline.default.hex}}<* else *>#c0c0c0<* endif *>",
       "brightRed": "{{colors.on_error_container.default.hex}}",
       "brightGreen": "#b8e8b4",
       "brightYellow": "#f5d98f",
       "brightBlue": "{{colors.primary_fixed.default.hex}}",
       "brightPurple": "{{colors.tertiary_fixed.default.hex}}",
       "brightCyan": "{{colors.secondary_fixed.default.hex}}",
-      "brightWhite": "{{colors.on_background.default.hex}}"
+      "brightWhite": "<* if {{ is_dark_mode }} *>{{colors.on_background.default.hex}}<* else *>#ffffff<* endif *>"
     }
   ]
 }

@@ -5,7 +5,7 @@
    ===================================================================== */
 
 * {
-    font-family: "Adwaita Sans", "Segoe UI Variable Text", "Segoe UI";
+    font-family: "Adwaita Sans", "Segoe UI Variable Text", "Segoe UI", "JetBrainsMono Nerd Font";
     font-size: 14px;
     font-weight: 700;
     color: #b4c5ff;
@@ -163,14 +163,16 @@
     font-size: 16px;
 }
 
-/* Popup power menu: 4 tombol bulat seperti rofi powermenu */
-.uptime {
+/* Popup power menu: 5 tombol bulat seperti rofi powermenu */
+.power-menu-overlay .uptime, .uptime {
     color: #c5c6d0;
 }
 .power-menu-popup .button {
     padding: 0;
-    width: 136px;
-    height: 136px;
+    min-width: 136px;
+    max-width: 136px;
+    min-height: 136px;
+    max-height: 136px;
     border-radius: 68px;
     background-color: #1a1b21;
     border: 4px solid #1a1b21;

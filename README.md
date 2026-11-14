@@ -13,7 +13,7 @@ sama seperti di hyprdots.
 | waybar | yasb | pill melayang: workspace, jam, tray, keyboard, media, volume, power |
 | matugen | matugen (Windows) | template: yasb, border komorebi, Windows Terminal |
 | swww + waypaper | `apply-wallpaper.ps1` + `pick-wallpaper.ps1` | `Win+Ctrl+B` membuka dialog pilih gambar |
-| rofi powermenu | power menu yasb | 4 tombol bulat: shutdown, restart, sleep, sign out |
+| rofi powermenu | power menu yasb | 5 tombol bulat: shutdown, restart, sleep, sign out, cancel |
 | kitty | Windows Terminal | skema "Matugen" + font/opacity/padding yang sama |
 | pulsemixer | audio menu yasb | klik widget volume |
 | hyprlock | `Win+O` | kunci layar bawaan Windows |
@@ -25,8 +25,11 @@ animasi 300 ms dengan kurva decel (EaseOutQuint).
 
 ## Pasang
 
-1. Pasang dependensi: komorebi + whkd, yasb, matugen, AutoHotkey v2 (untuk `Win+Enter`, sudah ada di config lama).
+1. Pasang dependensi: komorebi + whkd, yasb, matugen, AutoHotkey v2.
    matugen: unduh rilis dari <https://github.com/InioX/matugen/releases> atau `cargo install matugen`.
+   AutoHotkey: pasang via winget (`winget install AutoHotkey.AutoHotkey`) — `install.ps1` otomatis
+   memasang `elrond.ahk` (Win+Enter → Windows Terminal, Win+Alt+D → sembunyikan ikon desktop)
+   dan membuat shortcut di folder Startup bila AutoHotkey64 ditemukan.
 2. Pasang font: **Adwaita Sans** (font bar waybar) dan **JetBrainsMono Nerd Font**.
 3. Jalankan:
    ```powershell
@@ -58,9 +61,10 @@ animasi 300 ms dengan kurva decel (EaseOutQuint).
 
 ## Belum diuji di Windows: cek ini kalau ada yang aneh
 
-File dibuat dan divalidasi sintaksnya di Linux (YAML, JSON, TOML, keybind ganda, template matugen
-terhadap palet hyprdots). Script `.ps1` belum dijalankan di PowerShell.
-Opsi widget yasb dicocokkan dengan dokumentasi, tetapi versi yasb kamu bisa berbeda.
+File dibuat di Linux dan sejak itu: opsi widget yasb divalidasi terhadap skema pydantic
+yasb versi terbaru (opsi invalid mematikan seluruh bar), glyph Nerd Font kosong diisi ulang,
+CSS disesuaikan dengan QSS (`width`/`height` tidak didukung Qt), dan `install.ps1` sudah
+dijalankan di PowerShell 5.1. Sisanya tetap perlu diuji di mesin dengan komorebi/yasb aktif.
 
 - Bar kosong atau error: `yasbc log`.
 - Tombol power menu (ukuran/posisi ikon) mungkin perlu disetel di bagian `.power-menu-popup`
@@ -71,6 +75,7 @@ Opsi widget yasb dicocokkan dengan dokumentasi, tetapi versi yasb kamu bisa berb
 
 ## Keamanan
 
-Config yasb lama berisi API key WeatherAPI yang ikut ter-commit di repo publik.
-Widget cuaca sengaja tidak disertakan di sini. Kalau key itu milikmu, sebaiknya dibuat ulang
-dan dihapus dari repo (riwayat git juga masih menyimpannya).
+Config yasb lama berisi API key WeatherAPI yang ikut ter-commit di repo publik
+(masih ada di riwayat git, commit 5babf5c dan 73c37ca, dan key itu masih aktif).
+Widget cuaca sengaja tidak disertakan di sini. Key itu TIDAK bisa dihapus dari riwayat
+tanpa rewrite history + force push; minimal, **revoke/buat ulang key di weatherapi.com**.

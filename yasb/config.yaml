@@ -16,10 +16,8 @@ bars:
     class_name: "yasb-bar"
     alignment:
       position: "top"
-      center: false
     blur_effect:
       enabled: false
-      acrylic: false
       dark_mode: true
       round_corners: false
       border_color: None
@@ -51,7 +49,6 @@ widgets:
       label_zero_index: false
       hide_empty_workspaces: true   # hyprland hanya menampilkan workspace terisi + aktif
       hide_if_offline: true
-      animation: true
   clock:
     type: "yasb.clock.ClockWidget"
     options:
@@ -64,8 +61,6 @@ widgets:
     type: "yasb.systray.SystrayWidget"
     options:
       class_name: "systray"
-      label_collapsed: ""
-      label_expanded: ""
       label_position: "left"
       icon_size: 18
       show_unpinned: false          # mulai tertutup seperti drawer waybar
@@ -76,7 +71,7 @@ widgets:
   language:
     type: "yasb.language.LanguageWidget"
     options:
-      label: "<span></span> {lang[country_code]}"
+      label: "<span>\uf11c</span> {lang[country_code]}"
       label_alt: "{lang[full_name]}"
       update_interval: 5
       callbacks:
@@ -98,22 +93,11 @@ widgets:
       thumbnail_alpha: 250
       thumbnail_padding: 8
       thumbnail_corner_radius: 0
-      icons:
-        prev_track: ""
-        next_track: ""
-        play: "<span>󰎆</span>"
-        pause: "<span>󰎆</span>"
   volume:
     type: "yasb.volume.VolumeWidget"
     options:
       label: "<span>{icon}</span> {level}"
       label_alt: "{volume}"
-      volume_icons:
-        - ""  # muted
-        - ""  # 0-10%
-        - ""  # 11-30%
-        - ""  # 31-60%
-        - ""  # 61-100%
       callbacks:
         on_left: "toggle_volume_menu"      # padanan klik -> pulsemixer
         on_middle: "toggle_mute"
@@ -121,14 +105,15 @@ widgets:
   power_menu:
     type: "yasb.power_menu.PowerMenuWidget"
     options:
-      label: ""
+      label: "\uf011"
       uptime: false
       blur: false
       blur_background: true
       animation_duration: 250
-      button_row: 4                        # 4 tombol sejajar seperti rofi powermenu
+      button_row: 5                        # YASB mewajibkan tombol cancel di fullscreen menu
       buttons:
         shutdown: ["󰐥", "Shut Down"]
         restart: ["󰑓", "Restart"]
-        sleep: ["", "Sleep"]
-        signout: ["", "Sign out"]
+        sleep: ["\uf186", "Sleep"]
+        signout: ["\uf08b", "Sign out"]
+        cancel: ["\uf00d", "Cancel"]
