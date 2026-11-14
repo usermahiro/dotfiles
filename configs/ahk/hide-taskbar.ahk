@@ -8,8 +8,10 @@ hidden := true
 Rehide() {
     global hidden
     if hidden {
-        WinHide("ahk_class Shell_TrayWnd")
-        WinHide("ahk_class Shell_SecondaryTrayWnd")
+        if WinExist("ahk_class Shell_TrayWnd")
+            WinHide("ahk_class Shell_TrayWnd")
+        if WinExist("ahk_class Shell_SecondaryTrayWnd")
+            WinHide("ahk_class Shell_SecondaryTrayWnd")
     }
 }
 SetTimer(Rehide, 1000)
