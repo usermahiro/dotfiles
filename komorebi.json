@@ -1,6 +1,6 @@
 {
   "$schema": "https://komorebi.lgug2z.com/schema",
-  "app_specific_configuration_path": "$Env:USERPROFILE/.config/komorebi/applications.json",
+  "app_specific_configuration_path": "$Env:USERPROFILE/applications.json",
   "cross_monitor_move_behaviour": "Insert",
   "window_hiding_behaviour": "Cloak",
   "default_workspace_padding": 2,
