@@ -47,7 +47,7 @@ Set-ItemProperty -Path 'HKCU:\Control Panel\Desktop' -Name TileWallpaper -Value 
 [void][WinWall]::SystemParametersInfo(0x0014, 0, $Path, 0x03)
 
 # 2) Generate warna Material You dan render semua template
-& matugen image $Path -m $Mode -t $Scheme -c $cfg
+& matugen image $Path -m $Mode -t $Scheme --source-color-index 0 -c $cfg
 if ($LASTEXITCODE -ne 0) {
     throw "matugen gagal (exit code $LASTEXITCODE). Cek 'matugen --help' untuk versi kamu."
 }
