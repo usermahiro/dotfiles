@@ -1,7 +1,5 @@
-# YASB: tiruan waybar dari hyprdots.
-# Kiri: workspace | Tengah: jam | Kanan: tray, keyboard, media, volume, power
-# Widget lain dari config lama (weather, cava, github, disk, dst.) sengaja dihapus
-# agar mirip aslinya; config lama kamu tetap ada di repo dotfiles.
+# Bar diadaptasi dari Rifqi2007c/windows-custom-desktop-pack,
+# difix untuk YASB v2.0.8 (opsi invalid dihapus) + single monitor + matugen.
 watch_stylesheet: true
 watch_config: true
 debug: false
@@ -12,108 +10,220 @@ komorebi:
 bars:
   primary-bar:
     enabled: true
-    screens: ['*']
+    screens: ["*"]
     class_name: "yasb-bar"
     alignment:
       position: "top"
+    animation:
+      enabled: true
+      duration: 1000
     blur_effect:
       enabled: false
-      dark_mode: true
+      dark_mode: false
       round_corners: false
-      border_color: None
+      border_color: "System"
     window_flags:
-      always_on_top: true
+      always_on_top: false
       windows_app_bar: true
-      hide_on_fullscreen: true
     dimensions:
       width: "100%"
-      height: 38
+      height: 28
     padding:
-      top: 4      # margin-top: 4 di waybar
-      left: 4
+      top: 4
+      left: 6
       bottom: 0
-      right: 4
+      right: 6
     widgets:
-      left: ["komorebi_workspaces"]
-      center: ["clock"]
-      right: ["systray", "language", "media", "volume", "power_menu"]
+      left: [
+        "home",
+        "komorebi_workspaces",
+        "komorebi_active_layout",
+        "active_window",
+      ]
+      center: []
+      right: [
+        "wallpapers",
+        "clock",
+        "media",
+        "wifi",
+        "microphone",
+        "volume",
+        "power_menu"
+        ]
 widgets:
-  komorebi_workspaces:
-    type: "komorebi.workspaces.WorkspaceWidget"
+  home:
+    type: "yasb.home.HomeWidget"
     options:
-      label_offline: "⚡ Offline"
-      label_workspace_btn: "{index}"
-      label_workspace_active_btn: "{index}"
-      label_workspace_populated_btn: "{index}"
-      label_default_name: "{index}"
-      label_zero_index: false
-      hide_empty_workspaces: true   # hyprland hanya menampilkan workspace terisi + aktif
-      hide_if_offline: true
-  clock:
-    type: "yasb.clock.ClockWidget"
-    options:
-      label: "{%a %b %d %H:%M}"
-      label_alt: "{%A, %d %B %Y %H:%M}"
-      timezones: []
-      calendar:
-        alignment: "center"
-  systray:
-    type: "yasb.systray.SystrayWidget"
-    options:
-      class_name: "systray"
-      label_position: "left"
-      icon_size: 18
-      show_unpinned: false          # mulai tertutup seperti drawer waybar
-      show_unpinned_button: true
-      show_battery: false
-      show_volume: false
-      show_network: false
-  language:
-    type: "yasb.language.LanguageWidget"
-    options:
-      label: "<span>\uf11c</span> {lang[country_code]}"
-      label_alt: "{lang[full_name]}"
-      update_interval: 5
-      callbacks:
-        on_left: "toggle_label"
-        on_middle: "do_nothing"
-        on_right: "do_nothing"
+      label: "<span>\uec15</span>"
+      menu_list:
+      - { title: "User Home", path: "~" }
+      - { title: "Download", path: "~\\Downloads" }
+      - { title: "Documents", path: "~\\Documents" }
+      - { title: "Pictures", path: "~\\Pictures" }
+      system_menu: true
+      power_menu: true
+      blur: false
   media:
     type: "yasb.media.MediaWidget"
     options:
-      label: "{title}"
+      label: " <span>{title} - {artist}</span>"
       label_alt: "{artist}"
       max_field_size:
-        label: 25
-        label_alt: 25
-      show_thumbnail: false
+        label: 20
+        label_alt: 24
+      show_thumbnail: true
       controls_only: false
       controls_left: true
       hide_empty: true
-      thumbnail_alpha: 250
+      thumbnail_alpha: 150
       thumbnail_padding: 8
       thumbnail_corner_radius: 0
+      icons:
+        prev_track: "<span>\udb81\udcae</span>"
+        next_track: "<span>\udb81\udcad</span>"
+        play: "<span>\uf04b</span>"
+        pause: "<span>\uf04c</span>"
+  active_window:
+    type: "yasb.active_window.ActiveWindowWidget"
+    options:
+      label: "\uf427 {win[title]}"
+      label_alt: "[class_name='{win[class_name]}' exe='{win[process][name]}' hwnd={win[hwnd]}]"
+      label_no_window: "\uf427 what do you want to do today?"
+      label_icon: false
+      label_icon_size: 14
+      max_length: 100
+      max_length_ellipsis: "..."
+      monitor_exclusive: false
+  clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "{%a, %d %b, %I:%M %p}"
+      label_alt: "{%A, %d %B %Y %H:%M}"
+      timezones: []
+  komorebi_workspaces:
+    type: "komorebi.workspaces.WorkspaceWidget"
+    options:
+      label_offline: "\u23fc Offline"
+      label_workspace_btn: "\uf444"
+      label_workspace_active_btn: "\udb82\udfaf"
+      label_workspace_populated_btn: "\udb80\udea0"
+      label_default_name: "{index}"
+      label_zero_index: false
+      hide_empty_workspaces: false
+      hide_if_offline: true
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+  komorebi_active_layout:
+    type: "komorebi.active_layout.ActiveLayoutWidget"
+    options:
+      hide_if_offline: true
+      label: "{icon}"
+      layouts: [
+          "bsp",
+          "columns",
+          "rows",
+          "grid",
+          "vertical_stack",
+          "horizontal_stack",
+          "ultrawide_vertical_stack",
+          "right_main_vertical_stack",
+        ]
+      layout_icons:
+        bsp: "BSP"
+        columns: "COLS"
+        rows: "ROWS"
+        grid: "GRID"
+        vertical_stack: "V-STACK"
+        horizontal_stack: "H-STACK"
+        ultrawide_vertical_stack: "W-STACK"
+        right_main_vertical_stack: "RMV-STACK"
+        monocle: "MONOCLE"
+        maximised: "MAX"
+        floating: "FLOATING"
+        paused: "PAUSED"
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+      callbacks:
+        on_left: "next_layout"
+        on_middle: "toggle_monocle"
+        on_right: "prev_layout"
   volume:
     type: "yasb.volume.VolumeWidget"
     options:
       label: "<span>{icon}</span> {level}"
       label_alt: "{volume}"
+      tooltip: false
+      icons:
+        - "\ueee8"
+        - "\uf026"
+        - "\uf027"
+        - "\uf027"
+        - "\uf028"
       callbacks:
-        on_left: "toggle_volume_menu"      # padanan klik -> pulsemixer
-        on_middle: "toggle_mute"
+        on_right: "exec cmd.exe /c start ms-settings:sound"
+  microphone:
+    type: "yasb.microphone.MicrophoneWidget"
+    options:
+      label: "<span>{icon}</span> {level}"
+      label_alt: "<span>{icon}</span> {level}%"
+      icons:
+        normal: "\udb80\udf6c"
+        muted: "\udb80\udf6d"
+      callbacks:
+        on_left: "toggle_mute"
+        on_middle: "toggle_label"
         on_right: "exec cmd.exe /c start ms-settings:sound"
   power_menu:
     type: "yasb.power_menu.PowerMenuWidget"
     options:
       label: "\uf011"
-      uptime: false
-      blur: false
-      blur_background: true
-      animation_duration: 250
-      button_row: 5                        # YASB mewajibkan tombol cancel di fullscreen menu
+      uptime: True
+      blur: True
+      blur_background: True
+      animation_duration: 200
+      button_row: 5
       buttons:
-        shutdown: ["󰐥", "Shut Down"]
-        restart: ["󰑓", "Restart"]
-        sleep: ["\uf186", "Sleep"]
-        signout: ["\uf08b", "Sign out"]
+        shutdown: ["\uf011", "Shut Down"]
+        restart: ["\uead2", "Restart"]
+        signout: ["\udb80\udf43", "Sign out"]
+        hibernate: ["\uf28e", "Hibernate"]
+        sleep: ["\u23fe", "Sleep"]
         cancel: ["\uf00d", "Cancel"]
+  wifi:
+    type: "yasb.wifi.WifiWidget"
+    options:
+      label: "<span>{wifi_icon}</span> {wifi_name}"
+      label_alt: "{wifi_name}"
+      update_interval: 5000
+      callbacks:
+        on_left: "exec cmd.exe /c start ms-settings:network"
+        on_right: "toggle_label"
+      wifi_icons: [
+        "\udb82\udd2e",
+        "\udb82\udd1f",
+        "\udb82\udd22",
+        "\udb82\udd25",
+        "\udb82\udd28"
+      ]
+  wallpapers:
+    type: "yasb.wallpapers.WallpapersWidget"
+    options:
+      label: "<span>\uf1a5</span>"
+      image_path: "$Env:USERPROFILE\\Documents\\wall"
+      change_automatically: false
+      update_interval: 60
+      gallery:
+          enabled: true
+          blur: true
+          image_width: 220
+          image_per_page: 8
+          show_buttons: false
+          orientation: "portrait"
+          image_spacing: 8
+          image_corner_radius: 20
