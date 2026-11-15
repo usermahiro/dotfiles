@@ -22,4 +22,11 @@ init() {
   Run "komorebic identify-tray-application exe everything.exe", , "Hide"
 }
 
+; Tunggu komorebi hidup (hindari race saat boot), lalu terapkan rules
+Loop {
+    Sleep 2000
+    if ProcessExist("komorebi.exe")
+        break
+}
 init()
+ExitApp
