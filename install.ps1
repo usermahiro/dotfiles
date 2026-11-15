@@ -70,6 +70,8 @@ foreach ($cmd in 'komorebic', 'whkd', 'yasb', 'matugen') {
 Install-File (Join-Path $src 'configs\ahk\elrond.ahk') (Join-Path $winDots 'elrond.ahk')
 # AutoHotkey: hilangkan taskbar bawaan Windows sepenuhnya (Win+Alt+T = toggle)
 Install-File (Join-Path $src 'configs\ahk\hide-taskbar.ahk') (Join-Path $winDots 'hide-taskbar.ahk')
+# AutoHotkey: float-rules komorebi (Task Manager, Settings, tray apps) dari windows-custom-desktop-pack
+Install-File (Join-Path $src 'configs\ahk\komorebi-init.ahk') (Join-Path $winDots 'komorebi-init.ahk')
 $ahk = Get-Command 'AutoHotkey64' -ErrorAction SilentlyContinue
 if (-not $ahk) {
     $ahkExe = Get-ChildItem "$env:ProgramFiles\AutoHotkey" -Filter 'AutoHotkey64.exe' -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
@@ -77,7 +79,7 @@ if (-not $ahk) {
 }
 if ($ahk) {
     $startup = [Environment]::GetFolderPath('Startup')
-    foreach ($name in 'elrond', 'hide-taskbar') {
+    foreach ($name in 'elrond', 'hide-taskbar', 'komorebi-init') {
         $ahkPath = Join-Path $winDots "$name.ahk"
         if (-not (Test-Path -LiteralPath $ahkPath)) { continue }
         $lnk = Join-Path $startup "$name.lnk"

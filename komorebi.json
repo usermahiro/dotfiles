@@ -1,129 +1,10 @@
 {
-  "$schema": "https://komorebi.lgug2z.com/schema",
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.31/schema.json",
   "app_specific_configuration_path": "$Env:USERPROFILE/applications.json",
-  "cross_monitor_move_behaviour": "Insert",
   "window_hiding_behaviour": "Cloak",
-  "default_workspace_padding": 2,
-  "default_container_padding": 2,
-  "floating_applications": [
-    {
-      "kind": "Title",
-      "id": "Write:",
-      "matching_strategy": "StartsWith"
-    },
-    {
-      "kind": "Exe",
-      "id": "quick-picture-viewer.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Exe",
-      "id": "obs64.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Title",
-      "id": "Privacy and Network Access Policy",
-      "matching_strategy": "Contains"
-    },
-    {
-      "kind": "Title",
-      "id": "File Converter",
-      "matching_strategy": "Contains"
-    },
-    {
-      "kind": "Exe",
-      "id": "StartAllBackCfg.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Exe",
-      "id": "Photoshop.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Exe",
-      "id": "Illustrator.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Exe",
-      "id": "PicView.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Title",
-      "id": "Screenbox",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Exe",
-      "id": "prismlauncher.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Exe",
-      "id": "Yasb_themes.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Exe",
-      "id": "ResourceHacker.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Exe",
-      "id": "fdm.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Class",
-      "id": "RarReminder",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Class",
-      "id": "BootstrapUpdateUIClass",
-      "matching_strategy": "Equals"
-    }
-  ],
-  "ignore_rules": [
-    {
-      "kind": "Exe",
-      "id": "Yasb.exe",
-      "matching_strategy": "Equals"
-    }
-  ],
-  "mouse_follows_focus": false,
-  "transparency": true,
-  "transparency_alpha": 242,
-  "transparency_ignore_rules": [
-    {
-      "kind": "Title",
-      "id": "YouTube",
-      "matching_strategy": "Contains"
-    },
-    {
-      "kind": "Title",
-      "id": "Picture",
-      "matching_strategy": "Contains"
-    },
-    {
-      "kind": "Title",
-      "id": "Media Player",
-      "matching_strategy": "Contains"
-    },
-    {
-      "kind": "Exe",
-      "id": "obs64.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Exe",
-      "id": "Illustrator.exe",
-      "matching_strategy": "Equals"
-    }
-  ],
+  "cross_monitor_move_behaviour": "Insert",
+  "default_workspace_padding": 8,
+  "default_container_padding": 3,
   "animation": {
     "enabled": true,
     "fps": 120,
@@ -134,76 +15,40 @@
     }
   },
   "border": true,
-  "border_implementation": "Komorebi",
-  "border_style": "System",
-  "border_width": 2,
-  "border_colours": {
-    "single": "#b4c5ff",
-    "stack": "#c1c5dd",
-    "monocle": "#e2bbdb",
-    "floating": "#e2bbdb",
-    "unfocused": "#1b2d60"
-  },
+  "border_width": 3,
+  "border_offset": -1,
   "stackbar": {
-    "height": 25,
-    "mode": "Never",
+    "height": 40,
+    "mode": "OnStack",
     "tabs": {
-      "width": 125,
-      "focused_text": "#74c7ec",
-      "unfocused_text": "#cdd6f4",
-      "background": "#1e1e2e",
-      "font_family": "JetBrainsMono Nerd Font",
-      "font_size": 14
+      "width": 300
     }
   },
   "monitors": [
     {
       "workspaces": [
         {
-          "name": "1",
-          "layout": "BSP",
-          "workspace_rules": [
-            {
-              "kind": "Exe",
-              "id": "zen.exe",
-              "matching_strategy": "Equals"
-            }
-          ]
-        },
-        {
-          "name": "2",
+          "name": "I",
           "layout": "BSP"
         },
         {
-          "name": "3",
+          "name": "II",
           "layout": "BSP"
         },
         {
-          "name": "4",
+          "name": "III",
           "layout": "BSP"
         },
         {
-          "name": "5",
+          "name": "IV",
           "layout": "BSP"
         },
         {
-          "name": "6",
+          "name": "V",
           "layout": "BSP"
         },
         {
-          "name": "7",
-          "layout": "BSP"
-        },
-        {
-          "name": "8",
-          "layout": "BSP"
-        },
-        {
-          "name": "9",
-          "layout": "BSP"
-        },
-        {
-          "name": "10",
+          "name": "VI",
           "layout": "BSP"
         }
       ]

@@ -14,6 +14,10 @@
 }
 
 /* Bar transparan; tiap widget jadi "pill" sendiri (seperti waybar) */
+.widget, .ws-btn, .systray .button, .systray .unpinned-visibility-btn,
+.power-menu-popup .button, .audio-container .device {
+    transition: background-color 150ms, color 150ms, padding 200ms;
+}
 .yasb-bar {
     background-color: rgba(0, 0, 0, 0);
     border: none;
